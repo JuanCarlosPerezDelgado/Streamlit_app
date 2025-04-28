@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from time import sleep
-import streamlit_option_menu
+import streamlit-option-menu
 from streamlit_option_menu import option_menu
 import plotly.express as px
 import webbrowser
