@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta,date         
 import pandas as pd
-import matplotlib.pyplot as plt     
 import numpy as np
 import streamlit as st
 from time import sleep
