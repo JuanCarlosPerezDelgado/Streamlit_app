@@ -2,6 +2,6 @@ pandas
 matplotlib
 numpy
 streamlit
-streamlit-option-menu==0.3.6
+streamlit-option-menu
 plotly
 pillow
