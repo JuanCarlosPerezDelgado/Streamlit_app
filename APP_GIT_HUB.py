@@ -4,9 +4,9 @@ import numpy as np
 import streamlit as st
 from time import sleep
 import streamlit-option-menu
-from streamlit_option_menu import option_menu
+from streamlit-option-menu import option_menu
 import plotly.express as px
-import webbrowser
+
 
 st.set_page_config(layout="wide")
 
