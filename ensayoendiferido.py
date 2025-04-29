@@ -55,66 +55,75 @@ def representacion_grafico(propiedades_ciclo,variables_ciclo,indicadores_termodi
         st.markdown("<br>", unsafe_allow_html=True)
         chart_analogica = st.empty()  # Placeholder para la gráfica
         chart_digital = st.empty() #Placeholder para la gráfica
-
-    st_autorefresh = st.experimental_rerun
     if 'i' not in st.session_state:
         st.session_state.i = 0
 
+    lista_tiempo = df_ampliado_analogico["Indice"].tolist()
 
-    lista_tiempo=df_ampliado_analogico["Indice"].tolist()
+# Solo si no hemos llegado al final
     if st.session_state.i < len(df_ampliado_analogico):
 
-        tiempo.markdown(f"""<div style="background-color: #e1f5fe;padding: 1rem;border-radius: 0.25rem;text-align: center;font-weight: 500;color: #01579b;">{f'Minuto: {i} - Hora: {lista_tiempo[i]}'}</div>""",unsafe_allow_html=True)
+        tiempo.markdown(f"""
+        <div style="background-color: #e1f5fe;padding: 1rem;border-radius: 0.25rem;text-align: center;font-weight: 500;color: #01579b;">
+        Minuto: {st.session_state.i} - Hora: {lista_tiempo[st.session_state.i]}
+        </div>""", unsafe_allow_html=True)
 
-        if 'Gráfico de líneas' in tipo_grafico_diferido and lista_variables_diferido:
-            # Gráfica analógica
-            if not df_ampliado_analogico.empty and any(col in df_ampliado_analogico.columns for col in lista_variables_diferido):
-                df_actual_analogico = df_ampliado_analogico.iloc[:i + 1]
-                df_melted_analogico = df_actual_analogico.melt(id_vars=['Tiempo','Indice'], var_name='Variable', value_name='Valor')
+    if 'Gráfico de líneas' in tipo_grafico_diferido and lista_variables_diferido:
 
-                fig_analogica = px.line(
-                    df_melted_analogico,
-                    x='Tiempo',
-                    y='Valor',
-                    color='Variable',
-                    labels={'Tiempo': 'Tiempo (minutos)', 'Valor': 'Valor'},
-                    title='Gráfica de variables analógicas',custom_data=['Indice'])
-                fig_analogica.update_traces(
-                    hovertemplate="Tiempo: %{x}<br>Valor: %{y}<br>Hora: %{customdata[0]}<br>Variable: %{fullData.name}<extra></extra>"
-                )
-                fig_analogica.update_layout(
-                    width=None,
-                    height=500,
-                    legend=dict(orientation='h', yanchor='bottom', y=-0.4,title_font_color='black'),
-                    xaxis=dict(showgrid=True, gridcolor='lightgray',range=[0,df_ampliado_analogico['Tiempo'].max()],mirror=False,linecolor='black',tickfont=dict(color='black'),title=dict(text='Tiempo (minutos)', font=dict(color='black'))),
-                    yaxis=dict(showgrid=True,gridcolor='lightgray',mirror=False,linecolor='black',tickfont=dict(color='black'),title=dict(text='Valor', font=dict(color='black'))))
-                chart_analogica.plotly_chart(fig_analogica)
+        # Gráfica analógica
+        if not df_ampliado_analogico.empty and any(col in df_ampliado_analogico.columns for col in lista_variables_diferido):
+            df_actual_analogico = df_ampliado_analogico.iloc[:st.session_state.i + 1]
+            df_melted_analogico = df_actual_analogico.melt(id_vars=['Tiempo', 'Indice'], var_name='Variable', value_name='Valor')
 
-                # Gráfica digital
-            if not df_ampliado_digital.empty and any(col in df_ampliado_digital.columns for col in lista_variables_diferido):
-                df_actual_digital = df_ampliado_digital.iloc[:i + 1]
-                df_melted_digital = df_actual_digital.melt(id_vars=['Tiempo','Indice'], var_name='Variable', value_name='Valor')
+            fig_analogica = px.line(
+                df_melted_analogico,
+                x='Tiempo',
+                y='Valor',
+                color='Variable',
+                labels={'Tiempo': 'Tiempo (minutos)', 'Valor': 'Valor'},
+                title='Gráfica de variables analógicas',
+                custom_data=['Indice']
+            )
+            fig_analogica.update_traces(
+                hovertemplate="Tiempo: %{x}<br>Valor: %{y}<br>Hora: %{customdata[0]}<br>Variable: %{fullData.name}<extra></extra>"
+            )
+            fig_analogica.update_layout(
+                width=None,
+                height=500,
+                legend=dict(orientation='h', yanchor='bottom', y=-0.4, title_font_color='black'),
+                xaxis=dict(showgrid=True, gridcolor='lightgray', range=[0, df_ampliado_analogico['Tiempo'].max()], mirror=False, linecolor='black', tickfont=dict(color='black'), title=dict(text='Tiempo (minutos)', font=dict(color='black'))),
+                yaxis=dict(showgrid=True, gridcolor='lightgray', mirror=False, linecolor='black', tickfont=dict(color='black'), title=dict(text='Valor', font=dict(color='black')))
+            )
+            chart_analogica.plotly_chart(fig_analogica)
 
-                fig_digital = px.line(
-                    df_melted_digital,
-                    x='Tiempo',
-                    y='Valor',
-                    color='Variable',
-                    labels={'Tiempo': 'Tiempo (minutos)', 'Valor': 'Estado'},
-                    title='Gráfica de variables digitales',custom_data=['Indice'])
-                fig_digital.update_traces(
-                    hovertemplate="Tiempo: %{x}<br>Valor: %{y}<br>Hora: %{customdata[0]}<br>Variable: %{fullData.name}<extra></extra>"
-                )
-                # Ajustes específicos para señales digitales
-                fig_digital.update_layout(
-                    width=None,
-                    height=500,
-                    legend=dict(orientation='h', yanchor='bottom', y=-0.4,title_font_color='black'),
-                    xaxis=dict(showgrid=True, gridcolor='lightgray',range=[0,df_ampliado_analogico['Tiempo'].max()],mirror=False,linecolor='black',tickfont=dict(color='black'),title=dict(text='Tiempo (minutos)', font=dict(color='black'))),
-                    yaxis=dict(showgrid=True,gridcolor='lightgray',tickvals=[0, 1], range=[-0.1, 1.1],mirror=False,linecolor='black',tickfont=dict(color='black'),title=dict(text='Valor', font=dict(color='black'))))
-                chart_digital.plotly_chart(fig_digital)
-# ⬇️ Avanzamos al siguiente punto
+        # Gráfica digital
+        if not df_ampliado_digital.empty and any(col in df_ampliado_digital.columns for col in lista_variables_diferido):
+            df_actual_digital = df_ampliado_digital.iloc[:st.session_state.i + 1]
+            df_melted_digital = df_actual_digital.melt(id_vars=['Tiempo', 'Indice'], var_name='Variable', value_name='Valor')
+
+            fig_digital = px.line(
+                df_melted_digital,
+                x='Tiempo',
+                y='Valor',
+                color='Variable',
+                labels={'Tiempo': 'Tiempo (minutos)', 'Valor': 'Estado'},
+                title='Gráfica de variables digitales',
+                custom_data=['Indice']
+            )
+            fig_digital.update_traces(
+                hovertemplate="Tiempo: %{x}<br>Valor: %{y}<br>Hora: %{customdata[0]}<br>Variable: %{fullData.name}<extra></extra>"
+            )
+            fig_digital.update_layout(
+                width=None,
+                height=500,
+                legend=dict(orientation='h', yanchor='bottom', y=-0.4, title_font_color='black'),
+                xaxis=dict(showgrid=True, gridcolor='lightgray', range=[0, df_ampliado_analogico['Tiempo'].max()], mirror=False, linecolor='black', tickfont=dict(color='black'), title=dict(text='Tiempo (minutos)', font=dict(color='black'))),
+                yaxis=dict(showgrid=True, gridcolor='lightgray', tickvals=[0, 1], range=[-0.1, 1.1], mirror=False, linecolor='black', tickfont=dict(color='black'), title=dict(text='Valor', font=dict(color='black')))
+            )
+            chart_digital.plotly_chart(fig_digital)
+
+    # Avanzar el contador
         st.session_state.i += 1
 
-    # ⬇️ Refrescamos automáticamente
+    # Refrescar la app automáticamente
         st.experimental_rerun()
