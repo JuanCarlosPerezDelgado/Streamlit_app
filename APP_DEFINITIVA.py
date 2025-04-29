@@ -23,9 +23,6 @@ from puntos_clave import calculos_termodinamicos_sin_restricciones
 from modelotermodinamico import calculo_modelo
 from modelotermodinamico import calculo_comparacion
 
-
-st.write("Versión actual de Streamlit:", st.__version__)
-
 st.set_page_config(layout="wide")
 
 with st.sidebar:
