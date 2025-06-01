@@ -53,7 +53,7 @@ if menu == 'Laboratorio Virtual':
         'nav-link-selected': {'background-color': '#03617E'}})
     if menu_herramientas = 'Entorno 360':
         st.components.v1.iframe("https://juancarlosperezdelgado.github.io/Imagenes/index.html", width=1000, height=1000)
-
+        
 elif menu == 'Datos en Continuo':
      
     if 'TOKEN' not in st.session_state:
