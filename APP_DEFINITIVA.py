@@ -25,6 +25,7 @@ from modelotermodinamico import calculo_comparacion
 from API import request_login
 from API import make_charts_request
 from API import process_charts_response
+from CHATBOT import chatbot
 
 st.set_page_config(layout="wide")
 
