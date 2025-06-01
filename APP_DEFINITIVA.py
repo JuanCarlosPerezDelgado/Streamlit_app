@@ -51,7 +51,7 @@ if menu == 'Laboratorio Virtual':
         'icon': {'color': 'orange', 'font-size': '18px'},
         'nav-link': {'font-size': '16px', 'text-align': 'left', 'margin': '0px'},
         'nav-link-selected': {'background-color': '#03617E'}})
-    if menu_herramientas = 'Entorno 360':
+    if menu_herramientas == 'Entorno 360':
         st.components.v1.iframe("https://juancarlosperezdelgado.github.io/Imagenes/index.html", width=1000, height=1000)
         
 elif menu == 'Datos en Continuo':
