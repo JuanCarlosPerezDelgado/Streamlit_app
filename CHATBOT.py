@@ -6,7 +6,7 @@ def chatbot():
 
     client = OpenAI(
         base_url="https://api.groq.com/openai/v1",
-        api_key=st.secrets["GROQ_API_KEY"]
+        api_key="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"
     )
 
     # Prompt de sistema con contexto del proyecto
