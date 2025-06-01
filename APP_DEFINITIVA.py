@@ -422,5 +422,4 @@ elif menu == 'Datos en Histórico':
                 calculo_comparacion(temperatura_evaporacion,salto_evaporador,temperatura_ambiente,salto_gascooler,velocidad_compresor,st.session_state.tabla_propiedades,st.session_state.tabla_propiedades_resumen,st.session_state.df_analizador_redes_ensayo,st.session_state.df_equipo_ensayo,st.session_state.df_evaporador_04_ensayo,st.session_state.df_valvula_expansion_05_ensayo,st.session_state.df_evaporador_06_ensayo,st.session_state.df_valvula_expansion_07_ensayo)
 
 elif menu == 'ChatBot':
-
-    print('SEGUIR')
+    chatbot()
