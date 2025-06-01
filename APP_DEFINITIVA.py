@@ -22,6 +22,9 @@ from puntos_clave import calculos_termodinamicos
 from puntos_clave import calculos_termodinamicos_sin_restricciones
 from modelotermodinamico import calculo_modelo
 from modelotermodinamico import calculo_comparacion
+from API import request_login
+from API import make_charts_request
+from API import process_charts_response
 
 st.set_page_config(layout="wide")
 
