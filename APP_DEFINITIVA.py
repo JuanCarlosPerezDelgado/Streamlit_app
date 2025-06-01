@@ -28,7 +28,7 @@ st.set_page_config(layout="wide")
 with st.sidebar:
 
     menu= option_menu(menu_title=None,  
-        options=['Laboratorio Virtual','Datos en Continuo','Datos en Histórico','Simulador Inteligente','ChatBot'],
+        options=['Laboratorio Virtual','Datos en Continuo','Datos en Histórico','ChatBot'],
         icons=['bi bi-info-circle', 'bi bi-cloud-arrow-down', 'bi bi-database-down', 'gear','bi bi-chat-dots'],
         default_index=0,
          styles={'container': {'padding': '5px', 'background-color': '#ffffff'},
@@ -403,11 +403,6 @@ elif menu == 'Datos en Histórico':
 
             if "df_equipo_ensayo" in st.session_state and st.session_state.df_equipo_ensayo is not None:
                 calculo_comparacion(temperatura_evaporacion,salto_evaporador,temperatura_ambiente,salto_gascooler,velocidad_compresor,st.session_state.tabla_propiedades,st.session_state.tabla_propiedades_resumen,st.session_state.df_analizador_redes_ensayo,st.session_state.df_equipo_ensayo,st.session_state.df_evaporador_04_ensayo,st.session_state.df_valvula_expansion_05_ensayo,st.session_state.df_evaporador_06_ensayo,st.session_state.df_valvula_expansion_07_ensayo)
-
-
-elif menu == 'Simulador Inteligente':
-
-    print('SEGUIR')
 
 elif menu == 'ChatBot':
 
