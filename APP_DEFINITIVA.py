@@ -50,15 +50,28 @@ if menu == 'Laboratorio Virtual':
 
 elif menu == 'Datos en Continuo':
      
-    menu_herramientas = option_menu(
-        menu_title=None,  
-        options=['Panel de Control','Gráficos de Datos'],
-        default_index=0,
-        orientation='horizontal',
-        styles={'container': {'padding': '5px', 'background-color': '#ffffff'},
-        'icon': {'color': 'orange', 'font-size': '18px'},
-        'nav-link': {'font-size': '16px', 'text-align': 'left', 'margin': '0px'},
-        'nav-link-selected': {'background-color': '#03617E'}})
+    if 'TOKEN' not in st.session_state:
+        st.session_state.TOKEN =''
+
+    if not st.session_state.TOKEN: 
+
+        col1, col2 = st.columns(2)
+        with col1:
+            USERNAME = st.text_input("Usuario")
+        with col2:
+            PASSWORD = st.text_input("Contraseña", type="password")
+    
+        if st.button("Entrar"):
+            TOKEN = request_login(USERNAME, PASSWORD)
+        
+            if TOKEN:
+                st.session_state.TOKEN = TOKEN
+            else: 
+                st.error('Error de autenticación')
+    
+    if st.session_state.TOKEN:
+        pass
+
 
 elif menu == 'Datos en Histórico':
 
