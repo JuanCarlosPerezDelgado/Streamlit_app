@@ -61,22 +61,20 @@ if menu == 'Laboratorio Virtual':
         with col1:
             pass
         with col2:
-            st.image("visionqr.png", width=195)
+            st.image("visionqr.png", width=340)
         with col3:
             pass
-        st.markdown("<br>", unsafe_allow_html=True)
-        col1, col2,col3 = st.columns(3)
+        col1, col2,col3,col4,col5 = st.columns(5)
         with col1:
             pass
         with col2:
-            with open("Lab.apk", "rb") as f:
-                apk_bytes = f.read()
-            st.download_button(
-            label="Descargar Archivo VR",
-            data=apk_bytes,
-            file_name="laboratorio_virtual_co2_malaga.apk",
-            mime="application/vnd.android.package-archive",icon=":material/download:"    )
+            pass
         with col3:
+            if st.button("Descargar Archivo VR"):
+                webbrowser.open_new_tab("https://drive.google.com/file/d/1tx1JBfqA62EtiPIAOtWrzowjwX2QHHOV/view?usp=drive_link")
+        with col4:
+            pass
+        with col5:
             pass
 
 elif menu == 'Datos en Continuo':
