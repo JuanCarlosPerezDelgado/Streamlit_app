@@ -61,7 +61,7 @@ if menu == 'Laboratorio Virtual':
         with col1:
             pass
         with col2:
-            st.image("visionqr.png", width=340)
+            st.image("visionqr.png", width=350)
         with col3:
             pass
         col1, col2,col3,col4,col5 = st.columns(5)
