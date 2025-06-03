@@ -61,7 +61,7 @@ if menu == 'Laboratorio Virtual':
         with col1:
             pass
         with col2:
-            st.image("visionqr.png", width=380)
+            st.image("visionqr.png", width=390)
         with col3:
             pass
         col1, col2,col3,col4,col5 = st.columns(5)
@@ -77,7 +77,7 @@ if menu == 'Laboratorio Virtual':
                    color: white;
                    border: none;
                    border-radius: 5px;
-                   font-size: 16px;
+                   font-size: 17px;
                    font-weight: bold;
                    cursor: pointer;'>
                 Descargar Archivo VR
