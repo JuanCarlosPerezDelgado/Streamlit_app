@@ -70,8 +70,20 @@ if menu == 'Laboratorio Virtual':
         with col2:
             pass
         with col3:
-            if st.button("Descargar Archivo VR"):
-                webbrowser.open_new_tab("https://drive.google.com/file/d/1tx1JBfqA62EtiPIAOtWrzowjwX2QHHOV/view?usp=drive_link")
+            st.markdown("""
+            <a href="https://drive.google.com/file/d/1tx1JBfqA62EtiPIAOtWrzowjwX2QHHOV/view?usp=drive_link" target="_blank">
+            <button style='padding: 0.6em 1.5em;
+                   background-color: #03617E;
+                   color: white;
+                   border: none;
+                   border-radius: 5px;
+                   font-size: 16px;
+                   font-weight: bold;
+                   cursor: pointer;'>
+                Descargar Archivo VR
+            </button>
+            </a>
+            """, unsafe_allow_html=True)
         with col4:
             pass
         with col5:
