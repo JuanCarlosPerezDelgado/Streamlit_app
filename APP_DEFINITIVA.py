@@ -44,7 +44,7 @@ if menu == 'Laboratorio Virtual':
 
     menu_herramientas = option_menu(
         menu_title=None,  
-        options=['Entorno 360','Información'],
+        options=['Entorno 360','Realidad Virtual','Información'],
         default_index=0,
         orientation='horizontal',
         styles={'container': {'padding': '5px', 'background-color': '#ffffff'},
@@ -54,6 +54,31 @@ if menu == 'Laboratorio Virtual':
     if menu_herramientas == 'Entorno 360':
         st.components.v1.iframe("https://juancarlosperezdelgado.github.io/Imagenes/index.html", width=2000, height=1000)
         
+    if menu_herramientas == 'Realidad Virtual':
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+        col1, col2,col3 = st.columns(3)
+        with col1:
+            pass
+        with col2:
+            st.image("visionqr.png", width=195)
+        with col3:
+            pass
+        st.markdown("<br>", unsafe_allow_html=True)
+        col1, col2,col3 = st.columns(3)
+        with col1:
+            pass
+        with col2:
+            with open("Lab.apk", "rb") as f:
+                apk_bytes = f.read()
+            st.download_button(
+            label="Descargar Archivo VR",
+            data=apk_bytes,
+            file_name="laboratorio_virtual_co2_malaga.apk",
+            mime="application/vnd.android.package-archive",icon=":material/download:"    )
+        with col3:
+            pass
+
 elif menu == 'Datos en Continuo':
      
     if 'TOKEN' not in st.session_state:
