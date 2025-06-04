@@ -265,24 +265,24 @@ elif menu == 'Datos en Histórico':
                 velocidad_reproduccion = st.number_input('Velocidad de reproducción (segundos)',0.1,10.0,1.0)
 
             with st.expander('Configuración'):
-
+                
                 col3, col4 = st.columns(2)
                 with col3: 
-                    variables_evaporador_04_diferido= st.multiselect('Evaporador 1',st.session_state.df_evaporador_04_ensayo.columns.tolist(),default='Temperatura camara (evaporador 1) (°C)')
+                    variables_evaporador_04_diferido= st.multiselect('Evaporador 1',st.session_state.df_evaporador_04_ensayo.columns.tolist(),default=st.session_state.df_evaporador_04_ensayo.columns.tolist())
                 with col4:
-                    variables_valvula_expansion_05_diferido = st.multiselect('Válvula expansion 1',st.session_state.df_valvula_expansion_05_ensayo.columns.tolist())
+                    variables_valvula_expansion_05_diferido = st.multiselect('Válvula expansion 1',st.session_state.df_valvula_expansion_05_ensayo.columns.tolist(),default=st.session_state.df_valvula_expansion_05_ensayo.columns.tolist())
 
                 col5, col6 = st.columns(2)
                 with col5:
-                    variables_evaporador_06_diferido = st.multiselect('Evaporador 2',st.session_state.df_evaporador_06_ensayo.columns.tolist())
+                    variables_evaporador_06_diferido = st.multiselect('Evaporador 2',st.session_state.df_evaporador_06_ensayo.columns.tolist(),default=st.session_state.df_evaporador_06_ensayo.columns.tolist())
                 with col6:
-                    variables_valvula_expansion_07_diferido = st.multiselect('Válvula expansion 2',st.session_state.df_valvula_expansion_07_ensayo.columns.tolist())
+                    variables_valvula_expansion_07_diferido = st.multiselect('Válvula expansion 2',st.session_state.df_valvula_expansion_07_ensayo.columns.tolist(),default=st.session_state.df_valvula_expansion_07_ensayo.columns.tolist())
 
                 col7, col8= st.columns(2)
                 with col7:
-                    variables_equipo_diferido = st.multiselect('Central transcrítica y gas-cooler',st.session_state.df_equipo_ensayo.columns.tolist(),default=['Temperatura evaporacion (°C)','Temperatura salida gas cooler (°C)','Temperatura deposito (°C)','Temperatura exterior (°C)','Rele compresor (on/off)','Temperatura descarga (°C)'])  
+                    variables_equipo_diferido = st.multiselect('Central transcrítica y gas-cooler',st.session_state.df_equipo_ensayo.columns.tolist(),default=st.session_state.df_equipo_ensayo.columns.tolist())  
                 with col8:
-                    variables_analizador_redes_diferido = st.multiselect('Analizador de redes',st.session_state.df_analizador_redes_ensayo.columns.tolist())
+                    variables_analizador_redes_diferido = st.multiselect('Analizador de redes',st.session_state.df_analizador_redes_ensayo.columns.tolist(),default=st.session_state.df_analizador_redes_ensayo.columns.tolist())
         
                 col9, col10= st.columns(2)
                 with col9:
