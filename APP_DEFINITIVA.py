@@ -260,7 +260,7 @@ elif menu == 'Datos en Histórico':
 
             col1, col2 = st.columns(2)
             with col1:
-                tipo_grafico_diferido = st.multiselect('Tipo de gráfico',['Scada','Gráfico de líneas','Tabla'],default=['Gráfico de líneas','Scada'])
+                tipo_grafico_diferido = st.multiselect('Tipo de gráfico',['Scada','Gráfico de líneas','Tabla'],default=['Scada'])
             with col2:
                 velocidad_reproduccion = st.number_input('Velocidad de reproducción (segundos)',0.1,10.0,1.0)
 
