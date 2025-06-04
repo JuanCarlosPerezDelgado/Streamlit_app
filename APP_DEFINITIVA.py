@@ -89,6 +89,30 @@ if menu == 'Laboratorio Virtual':
         with col5:
             pass
 
+    elif menu_herramientas == 'Información':
+        tab1, tab2, tab3 = st.tabs(["Descripción", "Características","Descripción del Sistema"])
+        with tab1:
+            st.write('Unidad de CO2 transcrítica con compresor rotativo (Rolling Piston) con inyección de vapor, y depósito separador de fases (flash-tank). Es una unidad partida, con control independiente de los evaporadores y la motocondensadora (resto del equipo). El sistema se construyó con dos evaporadores en paralelo que pueden operar de forma independiente (no simultánea) a diferentes temperaturas de servicio, pudiendo ubicarse en dos cámaras frigoríficas independientes.')
+            st.write('El prototipo se encuentra instalado en la Escuela de Ingenierías Industriales de la Universidad de Málaga. Ambos evaporadores están en la misma cámara (16 m3) para realizar experimentos con toda la potencia de la máquina. El gas cooler (disipador de calor) se instaló aislado de la central para facilitar la experimentación. Además, el equipo tiene un modo de operación con eyector totalmente novedoso (Info disponible en: https://doi.org/10.1016/j.ijrefrig.2024.06.014).')
+
+        with tab2:
+            st.write('- Potencia frigorífica (kW)*: 4')
+            st.write('-	Consumo del compresor (kW)*: 2.9')
+            st.write('-	COP: 1.4')
+            st.write('-	Volumen del flash-tank (L): 10')
+            st.write('-	Volumen etapa de baja (cm3): 8')
+            st.write('-	Volumen etapa intermedia (cm3): 5.6 cc')
+            st.write('*Evaporación -30 ºC y temperatura salida gas cooler 35 ºC.')
+
+        with tab3:
+            st.write('El siguiente esquema muestra una representación de la instalación (sin eyector), con la instrumentación utilizada y con numeración de los estados termodinámicos. Se utiliza un compresor de desplazamiento positivo con dos etapas e inyección de vapor intermedia. Esa inyección se produce de manera directa desde un flash-tank (flotante o sin control con válvula de inyección). Por aspectos de seguridad sí se incluye una válvula de alivio desde el vapor a la aspiración de baja del compresor que únicamente opera durante el arranque del equipo (transitorio inicial). El equipo está preparado para trabajar en condiciones transcríticas, realizándose el control de la presión de alta mediante una válvula electrónica de alta presión (BPV en el esquema). Los dos evaporadores trabajan al mismo tiempo, aunque está previsto para operar de manera independiente.')
+
+            st.image("ESQUEMA1.jpg", width=2000)
+
+
+
+
+
 elif menu == 'Datos en Continuo':
      
     if 'TOKEN' not in st.session_state:
