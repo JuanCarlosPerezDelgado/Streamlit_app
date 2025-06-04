@@ -71,7 +71,7 @@ if menu == 'Laboratorio Virtual':
             pass
         with col3:
             st.markdown("""
-            <a href="vision.kiconex.com" target="_blank">
+            <a href="https://vision.kiconex.com/" target="_blank">
             <button style='padding: 0.6em 1.5em;
                    background-color: #03617E;
                    color: white;
