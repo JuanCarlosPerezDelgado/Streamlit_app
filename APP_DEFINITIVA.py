@@ -80,7 +80,7 @@ if menu == 'Laboratorio Virtual':
                    font-size: 17px;
                    font-weight: bold;
                    cursor: pointer;'>
-                Descargar Archivo VR
+                Vision-Kiconex
             </button>
             </a>
             """, unsafe_allow_html=True)
