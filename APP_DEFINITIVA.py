@@ -89,7 +89,7 @@ if menu == 'Laboratorio Virtual':
         with col5:
             pass
 
-    elif menu_herramientas == 'Información':
+    if menu_herramientas == 'Información':
         tab1, tab2, tab3 = st.tabs(["Descripción", "Características","Descripción del Sistema"])
         with tab1:
             st.write('Unidad de CO2 transcrítica con compresor rotativo (Rolling Piston) con inyección de vapor, y depósito separador de fases (flash-tank). Es una unidad partida, con control independiente de los evaporadores y la motocondensadora (resto del equipo). El sistema se construyó con dos evaporadores en paralelo que pueden operar de forma independiente (no simultánea) a diferentes temperaturas de servicio, pudiendo ubicarse en dos cámaras frigoríficas independientes.')
